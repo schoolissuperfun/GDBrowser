@@ -58,10 +58,8 @@ app.use(timeout('20s'));
 
 app.use(async function(req, res, next) {
 
-  let subdomains = req.subdomains.map(x => x.toLowerCase())
-  if (!subdomains.length) subdomains = [""]
-  req.server = app.servers.find(x => subdomains.includes(x.id.toLowerCase()))
-  if (subdomains.length > 1 || !req.server) return res.redirect("http://" + req.get('host').split(".").slice(subdomains.length).join(".") + req.originalUrl)
+let subdomains = [""] 
+  req.server = app.servers.find(x => !x.id) // Force it to use the default GD server
 
   // will expand this in the future :wink:
   res.sendError = function(errorCode=500) {
