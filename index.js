@@ -386,4 +386,4 @@ app.use(function (err, req, res, next) {
 process.on('uncaughtException', (e) => { console.log(e) });
 process.on('unhandledRejection', (e, p) => { console.log(e) });
 
-app.listen(process.env.PORT || 2000, () => console.log(`Site online!`))
+app.listen(process.env.PORT || 10000, () => console.log(`Site online!`))
